@@ -1,0 +1,30 @@
+# Introduction
+
+*(Principalement tiré de WikiStat)*
+
+Un modèle statistique est un type de modèle mathématique : c'est une description d'un système par le langage et les concepts des mathématiques.
+
+De façon un peu schématique, on peut distinguer **la modélisation déterministe** (au sein d'un modèle déterministe, on ne prend pas en compte de variations aléatoires) et **la modélisation stochastique** (qui prend en compte ces variations aléatoires en essayant de leur associer une loi de probabilité).\
+La modélisation stochastique a pour but essentiel de préciser des lois de probabilité rendant compte des variations aléatoires de certains phénomènes, variations dues à des causes soit inconnues, soit impossible à mesurer (par exemple, parce qu'elles sont à venir).
+
+Au sein de la modélisation stochastique, la modélisation probabiliste a surtout pour but de donner un cadre formel permettant, d'une part de décrire les variations aléatoires dont il est question ci-dessus, d'autre part d'étudier les propriétés générales des phénomènes qui les régissent. Plus appliquée, la modélisation statistique consiste essentiellement à définir des outils appropriés pour modéliser des données observées, en tenant compte de leur nature aléatoire.
+
+Il faut noter que le terme de modélisation statistique est très général et que, à la limite, toute démarche statistique en relève.
+
+## La démarche de la modélisation en mathématique
+
+On peut distinguer plusieurs étapes :
+
+1. **On fait une hypothèse** sur les phénomènes étudiés (Ce matériel vaut-il le prix demandé ? Ce médicament est-il efficace ? Que faut-il faire pour que la situation s'améliore ?).
+
+2.  **Limiter le champ du problème** en recherchant les données qu'on imagine avoir un lien direct avec la question. Trop limiter fait courir le risque de ne pas modéliser un phénomène   qui a du poids dans le contexte, mais trop ouvrir entraîne une   dispersion des moyens et une accumulation de données non pertinentes   qu'il faudra écarter en justifiant les choix. Cette étape est la   plus délicate pour la qualité du modèle : elle est soumise aux a   priori du modélisateur, à ses manques de connaissances --- parfois   de méthode --- et aux moyens dont il dispose (temps, argent, accès   aux données). Au cours de cette étape, on choisit le type de modèle général qu'on va utiliser, notamment en fonction des données dont on pense disposer.
+
+3.  **Les hypothèses sont traduis mathématiquement** : c'est la [construction du modèle]{style="color: cyan"}
+- Filtrer les données afin d'en extraire les « bruits », ces irrégularités ou ces événements accessoires qui masquent l'essentiel ;
+- Éventuellement, reconstituer les manquants, c'est-à-dire les  objets qui manquent pour assurer la cohérence de l'ensemble (ex. le fonctionnement d'un paramètre dont on connaît l'existence   mais sur lequel on ne dispose pas de données). \
+C'est là qu'interviennent les outils mathématiques et informatiques, qui permettent un filtrage et une construction avec un minimum de   subjectivité en un minimum de temps.\
+Le « substrat » restant après nettoyage des données constitue le modèle, ensemble de règles ou d'équations. Il faut décrire ces règles le plus complètement possible : leur importance relative, les données en entrée et en sortie, les outils mathématiques utilisés, les étapes par lesquelles il faut passer, les points de contrôle.
+
+4. **Validation du modèle** : en appliquant aux données filtrées les règles du modèle, retrouve-t-on la situation initiale ? Si l'écart est trop important, il est nécessaire de se reposer la question des limites que l'on a fixées, ou de la pertinence des outils utilisés pour la modélisation.
+
+À chaque quantité intéressante on assigne une valeur qui peut varier dans le temps et l'espace, on les désigne par des lettres : $x,y,z...$ ; $u,v,w...$ ; $\alpha,\beta,\epsilon...$\ Toutes les valeurs ne se valent pas, il y a des *paramètres* et des *inconnues*.
