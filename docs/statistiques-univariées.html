@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 6 Statistiques univariées | Éléments de statistiques</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 6 Statistiques univariées | Éléments de statistiques" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 6 Statistiques univariées | Éléments de statistiques" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Antoine Le Doeuff" />
+
+
+<meta name="date" content="2023-02-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chercher-des-données-et-les-remplacer.html"/>
+<link rel="next" href="blocks.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Éléments de statistiques</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#la-démarche-de-la-modélisation-en-mathématique"><i class="fa fa-check"></i><b>2.1</b> La démarche de la modélisation en mathématique</a></li>
+</ul></li>
+<li class="part"><span><b>I Notions de statistiques élémentaires</b></span></li>
+<li class="chapter" data-level="3" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html"><i class="fa fa-check"></i><b>3</b> Les différents type de variables</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#quantitative"><i class="fa fa-check"></i><b>3.1</b> Quantitative</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#quantitative-discrète"><i class="fa fa-check"></i><b>3.1.1</b> Quantitative discrète</a></li>
+<li class="chapter" data-level="3.1.2" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#quantitative-continue"><i class="fa fa-check"></i><b>3.1.2</b> Quantitative continue</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#qualitative"><i class="fa fa-check"></i><b>3.2</b> Qualitative</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#nominal"><i class="fa fa-check"></i><b>3.2.1</b> Nominal</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#ordinale"><i class="fa fa-check"></i><b>3.2.2</b> Ordinale</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Nettoyer et transformer ses données</b></span></li>
+<li class="chapter" data-level="4" data-path="les-opérations-basiques.html"><a href="les-opérations-basiques.html"><i class="fa fa-check"></i><b>4</b> Les opérations basiques</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="les-opérations-basiques.html"><a href="les-opérations-basiques.html#extraction-des-données-concaténation"><i class="fa fa-check"></i><b>4.1</b> Extraction des données, concaténation</a></li>
+<li class="chapter" data-level="4.2" data-path="les-opérations-basiques.html"><a href="les-opérations-basiques.html#changer-la-nature-des-variables"><i class="fa fa-check"></i><b>4.2</b> Changer la nature des variables</a></li>
+<li class="chapter" data-level="4.3" data-path="les-opérations-basiques.html"><a href="les-opérations-basiques.html#résumé"><i class="fa fa-check"></i><b>4.3</b> Résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chercher-des-données-et-les-remplacer.html"><a href="chercher-des-données-et-les-remplacer.html"><i class="fa fa-check"></i><b>5</b> Chercher des données et les remplacer</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chercher-des-données-et-les-remplacer.html"><a href="chercher-des-données-et-les-remplacer.html#références"><i class="fa fa-check"></i><b>5.1</b> Références</a></li>
+</ul></li>
+<li class="part"><span><b>III Statistiques descriptives</b></span></li>
+<li class="chapter" data-level="6" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html"><i class="fa fa-check"></i><b>6</b> Statistiques univariées</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#variables-quantitatives"><i class="fa fa-check"></i><b>6.1</b> Variables quantitatives</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#mesurer-les-valeurs-centrales"><i class="fa fa-check"></i><b>6.1.1</b> Mesurer les valeurs centrales</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#les-indicateurs-de-dispersion"><i class="fa fa-check"></i><b>6.1.2</b> Les indicateurs de dispersion</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#intervalles-de-confiance-et-erreur-standard"><i class="fa fa-check"></i><b>6.1.3</b> Intervalles de confiance et erreur standard</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#les-données-manquantes"><i class="fa fa-check"></i><b>6.1.4</b> Les données manquantes</a></li>
+<li class="chapter" data-level="6.1.5" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#déterminer-la-distribution-des-données"><i class="fa fa-check"></i><b>6.1.5</b> Déterminer la distribution des données</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#les-tests"><i class="fa fa-check"></i><b>6.2</b> Les tests</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#tests-paramétriques-et-non-paramétriques"><i class="fa fa-check"></i><b>6.2.1</b> Tests paramétriques et non paramétriques</a></li>
+<li class="chapter" data-level="6.2.2" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#tests-sur-variables-quantitatives"><i class="fa fa-check"></i><b>6.2.2</b> Tests sur variables quantitatives</a></li>
+<li class="chapter" data-level="6.2.3" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#tests-sur-variables-qualitatives"><i class="fa fa-check"></i><b>6.2.3</b> Tests sur variables qualitatives</a></li>
+<li class="chapter" data-level="6.2.4" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#déterminer-les-corrélations"><i class="fa fa-check"></i><b>6.2.4</b> Déterminer les corrélations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>7</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>7.1</b> Equations</a></li>
+<li class="chapter" data-level="7.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>7.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="7.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>7.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>8</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>8.1</b> Publishing</a></li>
+<li class="chapter" data-level="8.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>8.2</b> 404 pages</a></li>
+<li class="chapter" data-level="8.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>8.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Éléments de statistiques</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="statistiques-univariées" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapitre 6</span> Statistiques univariées<a href="statistiques-univariées.html#statistiques-univariées" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="variables-quantitatives" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Variables quantitatives<a href="statistiques-univariées.html#variables-quantitatives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mesurer-les-valeurs-centrales" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Mesurer les valeurs centrales<a href="statistiques-univariées.html#mesurer-les-valeurs-centrales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En gros, la tendance centrale mesure la “moyenne” ou le “milieu” de vos
+données.</p>
+<ul>
+<li><p>La moyenne : la valeur moyenne. Elle est sensible aux valeurs
+aberrantes. <code>mean()</code></p></li>
+<li><p>La médiane : la valeur moyenne. C’est une alternative robuste à la
+moyenne : <code>sd()</code></p></li>
+<li><p>mode : la valeur la plus fréquente : <code>mfv()</code></p></li>
+</ul>
+<p>On peut cacluer la moyenne pondérée avec la fonction <code>weighted.mean()</code>.</p>
+<p>Si les vecteurs contiennent des données manquantes (<code>NA</code>), ajouter
+l’argument <code>na.rm=TRUE</code> aux fonctions <code>mean()</code> et <code>median()</code>. La
+fonction <code>mod()</code> gère par défaut les données manquantes.</p>
+<p>Les valeurs inhabituelles, appelées valeurs aberrantes, peuvent avoir
+davantage d’impact sur la moyenne que sur la médiane. Si vos données
+sont symétriques, la moyenne et la médiane sont similaires.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="statistiques-univariées.html#cb13-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## 
+## Attachement du package : &#39;dplyr&#39;</code></pre>
+<pre><code>## Les objets suivants sont masqués depuis &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## Les objets suivants sont masqués depuis &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="statistiques-univariées.html#cb17-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="statistiques-univariées.html#cb17-2" tabindex="-1"></a><span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="statistiques-univariées.html#cb17-3" tabindex="-1"></a><span class="fu">summarise</span>(<span class="fu">weighted.mean</span>(Sepal.Length, Petal.Length, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 2
+##   Species    `weighted.mean(Sepal.Length, Petal.Length, na.rm = TRUE)`
+##   &lt;fct&gt;                                                          &lt;dbl&gt;
+## 1 setosa                                                          5.02
+## 2 versicolor                                                      5.98
+## 3 virginica                                                       6.64</code></pre>
+</div>
+<div id="les-indicateurs-de-dispersion" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Les indicateurs de dispersion<a href="statistiques-univariées.html#les-indicateurs-de-dispersion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un indicateur de dispersion mesure la variabilité des valeurs d’une
+série statistique. Il est toujours positif et d’autant plus grand que
+les valeurs de la série sont étalées. Les plus courants sont :</p>
+<ul>
+<li><p>la <strong>variance</strong> : <code>var()</code></p></li>
+<li><p>l’<strong>écart-type</strong> : <code>sd()</code></p></li>
+<li><p>l’<strong>écart interquartile</strong> : <code>IQR()</code></p></li>
+</ul>
+<p>La variance représente l’écart moyen au carré par rapport à la moyenne.
+L’écart-type est la racine carrée de la variance. Il mesure l’écart
+moyen des valeurs, dans les données, par rapport à la valeur moyenne.</p>
+<p>L’écart-type est utilisé comme mesure de la dispersion lorsque la
+moyenne est utilisée comme mesure de la tendance centrale (c’est-à-dire
+pour des données numériques symétriques). Pour les données ordinales ou
+les données numériques asymétriques, on utilise la médiane et l’écart
+interquartile.</p>
+<p>Les quantiles divisent en 4 les données. L’écart interquantile
+(Interquantile Range – IRQ) correspond à la différence entre le premier
+et le troisième quantile. Il peut être une robuste alternative à
+l’écart-type. L’écart interquantile est souvent utilisé avec la médiane
+et est assez robuste aux valeurs aberrantes.</p>
+<p>On peut également calculer les déciles : au lieu de séparer en quatre en
+sépare en 10.</p>
+<p>Les paramètres de dispersion donnent une indication de la variabilité
+des données, tandis que l’intervalle de confiance et l’erreur standard
+donnent une indication de la précision d’un paramètre de position.</p>
+<p>En particulier, la taille d’une série de données n’a pas d’impact sur sa
+dispersion (la variabilité n’augmente ou ne diminue pas avec le nombre
+d’individus) mais en a un sur la précision des paramètres de position
+(cette précision augmente avec le nombre d’individus).</p>
+</div>
+<div id="intervalles-de-confiance-et-erreur-standard" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Intervalles de confiance et erreur standard<a href="statistiques-univariées.html#intervalles-de-confiance-et-erreur-standard" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’intervalle de confiance et l’erreur standard permettent d’estimer la
+précision d’une grande variété de paramètres. Les trois cas les plus
+courants sont une moyenne, une médiane (pour laquelle seul l’intervalle
+de confiance a du sens) et une proportion.</p>
+<p>Pour toutes les fonctions calculant un intervalle de confiance, la
+précision de cet intervalle peut être modifiée grâce à l’argument
+<code>conf.level</code> (par défaut <code>conf.level=0.95</code>, ce qui calcule l’intervalle
+de confiance à 95 %).</p>
+<p><strong>Moyenne :</strong></p>
+<ul>
+<li><p>Intervalle de confiance :</p>
+<ul>
+<li><p>n &gt;= 30 : <code>t.test(serie)$conf.int</code>. Paramétrique où serie est
+un vecteur contenant la série de données</p></li>
+<li><p>n &lt; 30 : <code>bootstrap(serie,function(x,i) mean(x[i]))</code>. Non
+paramétrique</p></li>
+</ul></li>
+<li><p>Erreur standard :</p>
+<ul>
+<li><code>se()</code> (quelque soit l’effectif)</li>
+</ul></li>
+</ul>
+<p><strong>Médiane :</strong></p>
+<ul>
+<li><p>Intervalle de confiance :</p>
+<ul>
+<li><p>Si la série de données ne contient pas de 0 et quel que soit
+l’effectif : <code>wilcox.signtest(serie)$conf.int1</code></p></li>
+<li><p>Si la série de données contient au moins un 0 et quel que soit
+l’effectif : <code>wilcox.signtest(serie,mu=valeur)$conf.int</code> où
+valeur est une valeur quelconque absente de la série de données</p></li>
+</ul></li>
+</ul>
+<p><strong>Proportion :</strong></p>
+<ul>
+<li><p>Intervalle de confiance :</p>
+<ul>
+<li>Quelque soit l’effectif : <code>binom.test(a,b)$conf.int</code> où a est le
+nombre d’individus de la catégorie d’intérêt et b l’effectif
+total.</li>
+</ul></li>
+<li><p>Erreur standard :</p>
+<ul>
+<li>Quelque soit l’effectif : <code>se(a,b)</code></li>
+</ul></li>
+</ul>
+<div id="valeurs-aberrantes" class="section level4 hasAnchor" number="6.1.3.1">
+<h4><span class="header-section-number">6.1.3.1</span> Valeurs aberrantes<a href="statistiques-univariées.html#valeurs-aberrantes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>L’identification des données aberrantes est une étape obligatoire de
+toute analyse statistique. Elle se fait essentiellement visuellement,
+grâce à des graphes du type histogramme ou boîtes à moustaches.</p>
+<p>La suppression d’éventuelles données aberrantes est un point hautement
+plus délicat que leur simple identification. Supprimer une ou plusieurs
+donnée(s) aura nécessairement un effet sur les analyses qui vont suivre,
+et cet effet sera d’autant plus important que l’effectif de
+l’échantillon est faible. Il est donc tentant de supprimer les individus
+qui orientent les résultats vers des conclusions inverses à celles qui
+sont attendues.</p>
+<p>En biologie, par exemple, il n’y a globalement que deux raisons qui
+doivent pousser à éliminer une donnée :</p>
+<ul>
+<li><p>s’il y a manifestement eu une erreur technique dans la mesure ou
+dans la retranscription de la donnée (par exemple si l’appareil de
+mesure est défectueux)</p></li>
+<li><p>si la valeur de la mesure obtenue est biologiquement improbable pour
+la variable mesurée. En dehors de ces deux cas, il y a de grandes
+chances pour que la valeur « aberrante » soit simplement une
+singularité biologique de l’individu mesuré. Cette singularité est
+l’expression de la variabilité naturelle de tout caractère
+biologique, rien ne justifie donc que l’individu soit supprimé de
+l’étude.</p></li>
+</ul>
+<p>Dans tous les cas, l’identification et la suppression éventuelle de
+données aberrantes doit se faire avant tout autre analyse.<br />
+</p>
+<p>Mesurer la variabilité</p>
+<p>La variabilité exprime comment les données sont “dispersées”.</p>
+<p><strong>Visualisation :</strong> Boxplot</p>
+<div id="range-minimum-et-maximum" class="section level5 hasAnchor" number="6.1.3.1.1">
+<h5><span class="header-section-number">6.1.3.1.1</span> Range : minimum et maximum<a href="statistiques-univariées.html#range-minimum-et-maximum" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p><code>min()</code> renvoie le minimum<br />
+<code>maximum()</code> renvoie le maximum<br />
+<code>range()</code> renvoie le minimum et le maximum</p>
+</div>
+<div id="écart-interquantile" class="section level5 hasAnchor" number="6.1.3.1.2">
+<h5><span class="header-section-number">6.1.3.1.2</span> Écart interquantile<a href="statistiques-univariées.html#écart-interquantile" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Les quantiles divisent en 4 les données. L’écart interquantile
+(Interquantile Range – IRQ) correspond à la différence entre le premier
+et le troisième quantile. Il peut être une robuste alternative à
+l’écart-type.</p>
+<p>On peut également calculer les déciles : au lieu de séparer en quatre en
+sépare en 10.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="statistiques-univariées.html#cb19-1" tabindex="-1"></a><span class="fu">quantile</span>(iris<span class="sc">$</span>Sepal.Length, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.10</span>))</span></code></pre></div>
+<pre><code>##   0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% 
+## 4.30 4.80 5.00 5.27 5.60 5.80 6.10 6.30 6.52 6.90 7.90</code></pre>
+<p>L’écart interquantile est souvent utilisé avec la médiane et est assez
+robuste aux valeurs aberrantes.</p>
+</div>
+<div id="la-variance-et-lécart-type" class="section level5 hasAnchor" number="6.1.3.1.3">
+<h5><span class="header-section-number">6.1.3.1.3</span> La variance et l’écart type<a href="statistiques-univariées.html#la-variance-et-lécart-type" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La variance représente l’écart moyen au carré par rapport à la moyenne.
+L’écart-type est la racine carrée de la variance. Il mesure l’écart
+moyen des valeurs, dans les données, par rapport à la valeur moyenne.</p>
+</div>
+</div>
+<div id="calculer-un-résumer-pour-une-variable-ou-un-data-frame" class="section level4 hasAnchor" number="6.1.3.2">
+<h4><span class="header-section-number">6.1.3.2</span> Calculer un résumer pour une variable ou un data frame<a href="statistiques-univariées.html#calculer-un-résumer-pour-une-variable-ou-un-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>La variance représente l’écart moyen au carré par rapport à la moyenne.
+L’écart-type est la racine carrée de la variance. Il mesure l’écart
+moyen des valeurs, dans les données, par rapport à la valeur moyenne.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="statistiques-univariées.html#cb21-1" tabindex="-1"></a><span class="fu">library</span>(pastecs)</span></code></pre></div>
+<pre><code>## Warning: le package &#39;pastecs&#39; a été compilé avec la version R 4.2.2</code></pre>
+<pre><code>## 
+## Attachement du package : &#39;pastecs&#39;</code></pre>
+<pre><code>## Les objets suivants sont masqués depuis &#39;package:dplyr&#39;:
+## 
+##     first, last</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="statistiques-univariées.html#cb25-1" tabindex="-1"></a><span class="co"># On calcul les statistiques pour la colonne 5 du tableau round(res, 2)</span></span>
+<span id="cb25-2"><a href="statistiques-univariées.html#cb25-2" tabindex="-1"></a><span class="fu">stat.desc</span>(iris[, <span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##      nbr.val     nbr.null       nbr.na          min          max        range 
+## 150.00000000   0.00000000   0.00000000   2.00000000   4.40000000   2.40000000 
+##          sum       median         mean      SE.mean CI.mean.0.95          var 
+## 458.60000000   3.00000000   3.05733333   0.03558833   0.07032302   0.18997942 
+##      std.dev     coef.var 
+##   0.43586628   0.14256420</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="statistiques-univariées.html#cb27-1" tabindex="-1"></a><span class="fu">library</span>(summarytools)</span>
+<span id="cb27-2"><a href="statistiques-univariées.html#cb27-2" tabindex="-1"></a><span class="co"># statistiques pour tous le df</span></span>
+<span id="cb27-3"><a href="statistiques-univariées.html#cb27-3" tabindex="-1"></a><span class="fu">view</span>(<span class="fu">dfSummary</span>(iris))</span></code></pre></div>
+<pre><code>## Switching method to &#39;browser&#39;</code></pre>
+<pre><code>## Output file written: C:\Users\antoi\AppData\Local\Temp\RtmpEXbEKw\file6a905b07445e.html</code></pre>
+<p>On peut tout aussi bien utiliser cette fonction pour l’ensemble des
+variables d’un <code>df</code>.</p>
+</div>
+<div id="calculer-un-tableau-croisé-dynamique" class="section level4 hasAnchor" number="6.1.3.3">
+<h4><span class="header-section-number">6.1.3.3</span> Calculer un tableau croisé dynamique<a href="statistiques-univariées.html#calculer-un-tableau-croisé-dynamique" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R permet de calculer très simplement tableau croisé dynamique pour une
+variable.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="statistiques-univariées.html#cb30-1" tabindex="-1"></a><span class="fu">table</span>(dplyr<span class="sc">::</span>starwars<span class="sc">$</span>hair_color)</span></code></pre></div>
+<pre><code>## 
+##        auburn  auburn, grey auburn, white         black         blond 
+##             1             1             1            13             3 
+##        blonde         brown   brown, grey          grey          none 
+##             1            18             1             1            37 
+##       unknown         white 
+##             1             4</code></pre>
+</div>
+</div>
+<div id="les-données-manquantes" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Les données manquantes<a href="statistiques-univariées.html#les-données-manquantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Si on souhaite connaître le nombre <code>NA</code> que l’on a dans chaque variables
+on peut utiliser le code suivant :</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="statistiques-univariées.html#cb32-1" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(starwars))</span></code></pre></div>
+<pre><code>##       name     height       mass hair_color skin_color  eye_color birth_year 
+##          0          6         28          5          0          0         44 
+##        sex     gender  homeworld    species      films   vehicles  starships 
+##          4          4         10          4          0          0          0</code></pre>
+<p>Si on a des données cela peut perturber les fonctions. Pour éviter cela
+on peut utiliser l’argument <code>na.rm = TRUE</code>.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="statistiques-univariées.html#cb34-1" tabindex="-1"></a><span class="co"># retirer les NAs dans le calcul d&#39;une moyenne</span></span>
+<span id="cb34-2"><a href="statistiques-univariées.html#cb34-2" tabindex="-1"></a><span class="fu">mean</span>(dplyr<span class="sc">::</span>starwars<span class="sc">$</span>mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 97.31186</code></pre>
+<p>Si on veut <strong>supprimer les lignes contenants des données manquantes</strong> on
+peut utiliser la fonction <code>na.omit()</code>.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="statistiques-univariées.html#cb36-1" tabindex="-1"></a><span class="fu">na.omit</span>(dplyr<span class="sc">::</span>starwars)</span></code></pre></div>
+<pre><code>## # A tibble: 29 × 14
+##    name        height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
+##    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+##  1 Luke Skywa…    172    77 blond   fair    blue       19   male  mascu… Tatooi…
+##  2 Darth Vader    202   136 none    white   yellow     41.9 male  mascu… Tatooi…
+##  3 Leia Organa    150    49 brown   light   brown      19   fema… femin… Aldera…
+##  4 Owen Lars      178   120 brown,… light   blue       52   male  mascu… Tatooi…
+##  5 Beru White…    165    75 brown   light   blue       47   fema… femin… Tatooi…
+##  6 Biggs Dark…    183    84 black   light   brown      24   male  mascu… Tatooi…
+##  7 Obi-Wan Ke…    182    77 auburn… fair    blue-g…    57   male  mascu… Stewjon
+##  8 Anakin Sky…    188    84 blond   fair    blue       41.9 male  mascu… Tatooi…
+##  9 Chewbacca      228   112 brown   unknown blue      200   male  mascu… Kashyy…
+## 10 Han Solo       180    80 brown   fair    brown      29   male  mascu… Corell…
+## # … with 19 more rows, 4 more variables: species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;, and abbreviated variable names
+## #   ¹​hair_color, ²​skin_color, ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+</div>
+<div id="déterminer-la-distribution-des-données" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> Déterminer la distribution des données<a href="statistiques-univariées.html#déterminer-la-distribution-des-données" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If the sample size is large enough (n ~ 30), we can ignore the
+distribution of the data and use parametric tests.</p>
+<p><strong>The central limit theorem</strong> tells us that no matter what distribution
+things have, the sampling distribution tends to be normal if the sample
+is large enough (n &gt; 30).</p>
+<div id="test-de-normalité" class="section level4 hasAnchor" number="6.1.5.1">
+<h4><span class="header-section-number">6.1.5.1</span> Test de normalité<a href="statistiques-univariées.html#test-de-normalité" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="méthode-visuelle" class="section level5 hasAnchor" number="6.1.5.1.1">
+<h5><span class="header-section-number">6.1.5.1.1</span> Méthode visuelle<a href="statistiques-univariées.html#méthode-visuelle" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="sec:test-de-normalite" class="section level5 hasAnchor" number="6.1.5.1.2">
+<h5><span class="header-section-number">6.1.5.1.2</span> Test de normalité<a href="statistiques-univariées.html#sec:test-de-normalite" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Shapiro-Wilk’s method is widely recommended for normality test and it
+provides better power than K-S. It is based on the correlation between
+the data and the corresponding normal scores.</p>
+<p>Hypothèse de test :</p>
+<ul>
+<li><p>H0 : La distribution suit la loi normale</p></li>
+<li><p>H1 (Ha) : La distribution ne suit pas la loi normale</p></li>
+</ul>
+<p>Si le test est <strong>significatif</strong> (p &lt; 0.05 par exemple) H0 est rejeté.
+Donc, avec p &lt; 0.05 on rejette l’hypothèse : pas de normalité.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="statistiques-univariées.html#cb38-1" tabindex="-1"></a><span class="co"># Pour une seule variable </span></span>
+<span id="cb38-2"><a href="statistiques-univariées.html#cb38-2" tabindex="-1"></a><span class="fu">shapiro.test</span>(iris<span class="sc">$</span>Sepal.Width)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  iris$Sepal.Width
+## W = 0.98492, p-value = 0.1012</code></pre>
+<p>La p-value est supérieur à 0.05, on ne peut pas rejeter <span class="math inline">\(H_0\)</span> :
+<code>Sepal.width</code> est possède une distribution similaire à celle d’une
+distribution normale. En d’autres termes, une valeur <span class="math inline">\(p\)</span> de 0,1 pour le
+test de Shapiro-Wilk indique une probabilité de 10% d’observer la
+statistique de test si l’hypothèse nulle (<span class="math inline">\(H_0\)</span>) de normalité est vraie.</p>
+<p>Pour toute les variables d’un df, on peut utiliser la fonction suivante</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="statistiques-univariées.html#cb40-1" tabindex="-1"></a>shapiro_test_df <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">bonf=</span> <span class="cn">TRUE</span>, <span class="at">alpha=</span> <span class="fl">0.05</span>) {</span>
+<span id="cb40-2"><a href="statistiques-univariées.html#cb40-2" tabindex="-1"></a>                        l <span class="ot">&lt;-</span> <span class="fu">lapply</span>(df, shapiro.test)</span>
+<span id="cb40-3"><a href="statistiques-univariées.html#cb40-3" tabindex="-1"></a>                        s <span class="ot">&lt;-</span> <span class="fu">do.call</span>(<span class="st">&quot;c&quot;</span>, <span class="fu">lapply</span>(l, <span class="st">&quot;[[&quot;</span>, <span class="dv">1</span>))</span>
+<span id="cb40-4"><a href="statistiques-univariées.html#cb40-4" tabindex="-1"></a>                        p <span class="ot">&lt;-</span> <span class="fu">do.call</span>(<span class="st">&quot;c&quot;</span>, <span class="fu">lapply</span>(l, <span class="st">&quot;[[&quot;</span>, <span class="dv">2</span>))</span>
+<span id="cb40-5"><a href="statistiques-univariées.html#cb40-5" tabindex="-1"></a>                        <span class="cf">if</span> (bonf <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb40-6"><a href="statistiques-univariées.html#cb40-6" tabindex="-1"></a>                            sig <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p <span class="sc">&gt;</span> alpha <span class="sc">/</span> <span class="fu">length</span>(l), <span class="st">&quot;H0&quot;</span>, <span class="st">&quot;Ha&quot;</span>)</span>
+<span id="cb40-7"><a href="statistiques-univariées.html#cb40-7" tabindex="-1"></a>                        } <span class="cf">else</span> {</span>
+<span id="cb40-8"><a href="statistiques-univariées.html#cb40-8" tabindex="-1"></a>                            sig <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(p <span class="sc">&gt;</span> alpha, <span class="st">&quot;H0&quot;</span>, <span class="st">&quot;Ha&quot;</span>)</span>
+<span id="cb40-9"><a href="statistiques-univariées.html#cb40-9" tabindex="-1"></a>                        }</span>
+<span id="cb40-10"><a href="statistiques-univariées.html#cb40-10" tabindex="-1"></a>                        <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">statistic=</span> s,</span>
+<span id="cb40-11"><a href="statistiques-univariées.html#cb40-11" tabindex="-1"></a>                        <span class="at">p.value=</span> p,</span>
+<span id="cb40-12"><a href="statistiques-univariées.html#cb40-12" tabindex="-1"></a>                        <span class="at">significance=</span> sig,</span>
+<span id="cb40-13"><a href="statistiques-univariées.html#cb40-13" tabindex="-1"></a>                        <span class="at">method=</span> <span class="fu">ifelse</span>(bonf <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="st">&quot;Shapiro-Wilks test with Bonferroni Correction&quot;</span>,</span>
+<span id="cb40-14"><a href="statistiques-univariées.html#cb40-14" tabindex="-1"></a>                                       <span class="st">&quot;Shapiro-Wilks test without Bonferroni Correction&quot;</span>)))</span>
+<span id="cb40-15"><a href="statistiques-univariées.html#cb40-15" tabindex="-1"></a>                    }</span>
+<span id="cb40-16"><a href="statistiques-univariées.html#cb40-16" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb40-17"><a href="statistiques-univariées.html#cb40-17" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric))<span class="sc">%&gt;%</span> <span class="co"># Sélection des variables numériques</span></span>
+<span id="cb40-18"><a href="statistiques-univariées.html#cb40-18" tabindex="-1"></a>  <span class="fu">shapiro_test_df</span>()  </span></code></pre></div>
+<pre><code>## $statistic
+## Sepal.Length.W  Sepal.Width.W Petal.Length.W  Petal.Width.W 
+##      0.9760903      0.9849179      0.8762681      0.9018349 
+## 
+## $p.value
+## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+## 1.018116e-02 1.011543e-01 7.412263e-10 1.680465e-08 
+## 
+## $significance
+## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##         &quot;Ha&quot;         &quot;H0&quot;         &quot;Ha&quot;         &quot;Ha&quot; 
+## 
+## $method
+## [1] &quot;Shapiro-Wilks test with Bonferroni Correction&quot;</code></pre>
+<p>Dans le jeu de donnée <code>iris</code>, seul <code>Sepal.Width</code> suit une distribution
+normale.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="les-tests" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Les tests<a href="statistiques-univariées.html#les-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tests-paramétriques-et-non-paramétriques" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Tests paramétriques et non paramétriques<a href="statistiques-univariées.html#tests-paramétriques-et-non-paramétriques" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Afin de savoir quel test utiliser, paramétrique ou non-paramétrique, on
+doit se demander, dans l’ordre :</p>
+<ol style="list-style-type: decimal">
+<li><strong>Normally distributed data :</strong> courbe gausienne. test de
+Shapiro-Wilk. Q-Q plot.</li>
+<li><strong>Homogeneity of variance :</strong> this assumption means that the
+variances should be the same throughout the data homoscedasticité.
+Il faut pouvoir comparer des choses suffisament proche. Si la
+variance des variables est trop différente les unes des autres on ne
+pourra comparer. n = 2 test de fisher; n &gt; 2 test de Barklet.</li>
+<li><strong>Independence :</strong> the behaviour of one participant does not
+influence the behaviour of another</li>
+</ol>
+<p>Un test paramétrique la valeur prise par les observation est moins
+importante.</p>
+<ol style="list-style-type: decimal">
+<li><strong>À quoi sert le test ?</strong>
+<ul>
+<li>Exemple : « comparer les variances »</li>
+</ul></li>
+<li><strong>Question précédente permet de formuler H0 — H0 :</strong>
+<ul>
+<li>les variances sont « égales »</li>
+</ul></li>
+<li><strong>Quel est le risque si on rejette H0 ?</strong>
+<ul>
+<li>Valeur de la p-value </li>
+</ul></li>
+<li><strong>Ce risque est-il acceptable comparée à l’intervalle de confiance</strong>
+?
+<ul>
+<li>Si p-value &lt; le risque est acceptable. On considère que
+c’est le cas donc oui.</li>
+</ul></li>
+<li>Rejette-t-on H0 ?
+<ul>
+<li>Dans notre exemple oui (toujours même réponse que la précédente)</li>
+</ul></li>
+<li>Conclusion
+<ul>
+<li>On rejette H0 car le risque (de première espèce) de la rejeter
+est faible, on a peut de chance de se gourer. Les variances ne
+sont donc pas égales.</li>
+</ul></li>
+</ol>
+<p>On peut se dire que l’on “essaye” de rejeter<span class="math inline">\(H_0\)</span>. On y arrive quand la
+p-value est inférieur à la valeur seuil définie au préalable (<span class="math inline">\(\alpha\)</span>).</p>
+<div id="test-de-normalité-1" class="section level4 hasAnchor" number="6.2.1.1">
+<h4><span class="header-section-number">6.2.1.1</span> Test de normalité<a href="statistiques-univariées.html#test-de-normalité-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><em>cf.</em> ci-dessus</p>
+</div>
+<div id="comparaison-de-variance-homoscédasticité" class="section level4 hasAnchor" number="6.2.1.2">
+<h4><span class="header-section-number">6.2.1.2</span> Comparaison de variance — homoscédasticité<a href="statistiques-univariées.html#comparaison-de-variance-homoscédasticité" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>On utilise le <em>test de</em> <em>fischer</em>.</p>
+<p><span class="math inline">\(H_0\)</span> : les variables sont égales</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="statistiques-univariées.html#cb42-1" tabindex="-1"></a><span class="fu">var.test</span>(iris<span class="sc">$</span>Sepal.Width, iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  iris$Sepal.Width and iris$Sepal.Length
+## F = 0.27706, num df = 149, denom df = 149, p-value = 3.595e-14
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.2007129 0.3824528
+## sample estimates:
+## ratio of variances 
+##          0.2770617</code></pre>
+<p>La p-value est égale à 3.595e-14. On peut rejeter <span class="math inline">\(H_0\)</span>, les variances
+ne sont donc pas égales.</p>
+</div>
+</div>
+<div id="tests-sur-variables-quantitatives" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Tests sur variables quantitatives<a href="statistiques-univariées.html#tests-sur-variables-quantitatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="comparaison-de-moyenne" class="section level4 hasAnchor" number="6.2.2.1">
+<h4><span class="header-section-number">6.2.2.1</span> Comparaison de moyenne<a href="statistiques-univariées.html#comparaison-de-moyenne" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="paramétrique" class="section level5 hasAnchor" number="6.2.2.1.1">
+<h5><span class="header-section-number">6.2.2.1.1</span> Paramétrique<a href="statistiques-univariées.html#paramétrique" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Quand le nombre de variable à tester est de 2 on utilise le <em>test de
+student</em>.</p>
+<p><span class="math inline">\(H_0\)</span> : les moyennes de deux populations sont égales. ce qui signifie
+qu’il n’y a pas de différence significative entre les moyennes.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="statistiques-univariées.html#cb44-1" tabindex="-1"></a><span class="fu">t.test</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Width)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  iris$Sepal.Length and iris$Sepal.Width
+## t = 36.463, df = 225.68, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.63544 2.93656
+## sample estimates:
+## mean of x mean of y 
+##  5.843333  3.057333</code></pre>
+<p>Une p-value inférieure à 2.2e-16 que les moyennes sont significativement
+différentes, car la probabilité d’obtenir cette p-value sous l’hypothèse
+nulle (les moyennes sont égales) est très faible.</p>
+<p>Si le nombre de variable à tester est supérieur à deux on utilise
+l’ANOVA.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="statistiques-univariées.html#cb46-1" tabindex="-1"></a><span class="co">#aov()</span></span>
+<span id="cb46-2"><a href="statistiques-univariées.html#cb46-2" tabindex="-1"></a><span class="co">#summary(aov())</span></span></code></pre></div>
+<p><strong><em>Expliquer</em></strong></p>
+</div>
+<div id="non-paramétrique" class="section level5 hasAnchor" number="6.2.2.1.2">
+<h5><span class="header-section-number">6.2.2.1.2</span> Non-paramétrique<a href="statistiques-univariées.html#non-paramétrique" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Avec deux variables, on utilise le teste de <em>Wilcoxon-Mann-Whitney.</em></p>
+<p>C’est un test de rang. Apporte des différences moins grande pour être
+sûr qu’il y a des différences effectives. Techniquement, c’est un test
+de comparaison de médiane.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="statistiques-univariées.html#cb47-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Sepal.Length)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  iris$Sepal.Length and iris$Sepal.Length
+## W = 11250, p-value = 1
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+</div>
+<div id="tests-sur-variables-qualitatives" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Tests sur variables qualitatives<a href="statistiques-univariées.html#tests-sur-variables-qualitatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="test-dindépendance-chi2" class="section level4 hasAnchor" number="6.2.3.1">
+<h4><span class="header-section-number">6.2.3.1</span> Test d’indépendance <span class="math inline">\(\chi^2\)</span><a href="statistiques-univariées.html#test-dindépendance-chi2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Estimer si deux variables qualitatives sont indépendante et donc sy
+elles sont dépendante.</p>
+<p>L’indépendance entre deux caractères qualitatifs signifie que les
+modalités d’un caractère se distribuent de la même façon pour chacune
+des modalités de l’autre caractère.</p>
+<p>Par exemple, la couleur des yeux est-elle indépendante de la couleur des
+cheveux ? Si oui, les caractères sont indépendants et on a autant de
+chance d’avoir les yeux bleus sachant qu’on a les cheveux blond ou qu’on
+a les cheveux brun.</p>
+<p><strong>Conditions :</strong></p>
+<ul>
+<li>L’effectif théorique calculé sous l’hypothèse <span class="math inline">\(H_0\)</span> doit être
+supérieur à 5 (<em>i.e.</em> l’effectif d’une cellule d’un tableau doit
+être &gt; à 5). Dans le cas contraire, on utilise le test
+non-paramétrique <em>exact de fischer</em>.</li>
+</ul>
+<p>When one or more of the expected frequencies is less than 4 (or 5
+depending on the rule of thumb you follow) then it is wrong to use
+Pearson’s chi-squared or log-linear models (G tests) for your
+contingency table. This is because small expected values inflate the
+value of the test statistic, and it no longer can be assumed to follow
+the chi-squared distribution.</p>
+<p>Supposons que vous vouliez déterminer s’il existe une association
+significative entre l’habitude de fumer d’une personne et le
+développement d’un cancer du poumon. Vous recueillez des données auprès
+de 100 personnes et créez un tableau de contingence 2x2 :</p>
+<table>
+<thead>
+<tr class="header">
+<th>Eye color</th>
+<th>Sweet</th>
+<th>Salty</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Brown</td>
+<td>20</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>Blue</td>
+<td>4</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="statistiques-univariées.html#cb49-1" tabindex="-1"></a><span class="co"># tableau de contingence</span></span>
+<span id="cb49-2"><a href="statistiques-univariées.html#cb49-2" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">4</span>, <span class="dv">15</span>), <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb49-3"><a href="statistiques-univariées.html#cb49-3" tabindex="-1"></a><span class="fu">fisher.test</span>(table)</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table
+## p-value = 0.003051
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##   1.700824 37.824226
+## sample estimates:
+## odds ratio 
+##   7.160555</code></pre>
+<p>Dans cet exemple, le test exact de Fisher fourni un test plus précis de
+l’association entre la couleur des yeux et la préférence alimentaire,
+par rapport au test du chi-deux, car l’une des cellules du tableau de
+contingence comporte moins de 5 observations.</p>
+<p><strong>Conditions</strong></p>
+<p>Le cas des zéros :</p>
+<p>A single zero cell is not of itself of major consequence; nor even two
+in a 2x2 table if they don’t share a row or column. That is, case 1
+should not present any issue - your estimate of the odds ratio should be
+infinite and your p-value should be almost 0.</p>
+<p>However two 0’s in the same row or column is problematic. If you
+condition on the margins (as is the case with the Fisher test), there’s
+only one possible table consistent with both margins; your p-values will
+always be 1. In those specific circumstances there’s nothing to be done
+about that, there’s no information about relative proportions in the
+zero row (or column, as appropriate).</p>
+<p>Unconditionally you might just about be able to have some way to get to
+a p-value that’s not exactly 1 (I haven’t tried to come up with a way
+that would) – but even if you could, it’s really not going to help you
+much; the uncertainty in the proportions will swamp the effect in the
+mean (i.e. I believe you would still not be able to tell the relative
+proportions apart, since the uncertainty around any estimates would be
+almost entirely overlapping).</p>
+</div>
+</div>
+<div id="déterminer-les-corrélations" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Déterminer les corrélations<a href="statistiques-univariées.html#déterminer-les-corrélations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="évaluation-visuelle" class="section level4 hasAnchor" number="6.2.4.1">
+<h4><span class="header-section-number">6.2.4.1</span> Évaluation visuelle<a href="statistiques-univariées.html#évaluation-visuelle" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>On peut, dans un premier temps, réaliser un <em>scatterplot</em> qui permet
+d’établir directement une relation entre toutes les variables d’un
+data.frame.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="statistiques-univariées.html#cb51-1" tabindex="-1"></a><span class="fu">plot</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<p><img src="04-stat_desc_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Ici on remarque directement une relation entre la variable
+<code>Petal.Lenght</code> et la variable <code>Petal.Width</code>.<br />
+On peut également afficher une matrice des corrélation avec la librairie
+<code>corrplot</code>.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="statistiques-univariées.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span></code></pre></div>
+<pre><code>## corrplot 0.92 loaded</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="statistiques-univariées.html#cb54-1" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">method =</span> <span class="st">&quot;kendal&quot;</span>))</span></code></pre></div>
+<p><img src="04-stat_desc_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>On remarque bien la corrélation entre <code>Petal.Lenght</code> et la variable
+<code>Petal.Width</code> mais également entre <code>Petal.Lenght</code> et <code>Sepal.Length</code>.</p>
+<p>Si on a des valeurs manquantes la fonction ne va pas fonctionner, il
+faut alors utiliser l’argument : <code>use = "complete.obs"</code></p>
+<p>La fonction <code>cor()</code> retourne seulement le coefficient de corrélation. On
+peut également calculer la p-value.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="statistiques-univariées.html#cb55-1" tabindex="-1"></a><span class="fu">cor.mtest</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">method =</span> <span class="st">&quot;kendal&quot;</span>, <span class="at">use =</span> <span class="st">&quot; complete.obs&quot;</span>, <span class="at">conf.level =</span> .<span class="dv">95</span>) <span class="co"># on calcule la p=value</span></span></code></pre></div>
+<pre><code>## $p
+##              Sepal.Length Sepal.Width Petal.Length  Petal.Width
+## Sepal.Length 0.000000e+00 0.182921015 1.169126e-36 8.801486e-30
+## Sepal.Width  1.829210e-01 0.000000000 1.283268e-03 7.518013e-03
+## Petal.Length 1.169126e-36 0.001283268 0.000000e+00 2.443446e-44
+## Petal.Width  8.801486e-30 0.007518013 2.443446e-44 0.000000e+00
+## 
+## $lowCI
+##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length            1          NA           NA          NA
+## Sepal.Width            NA           1           NA          NA
+## Petal.Length           NA          NA            1          NA
+## Petal.Width            NA          NA           NA           1
+## 
+## $uppCI
+##              Sepal.Length Sepal.Width Petal.Length Petal.Width
+## Sepal.Length            1          NA           NA          NA
+## Sepal.Width            NA           1           NA          NA
+## Petal.Length           NA          NA            1          NA
+## Petal.Width            NA          NA           NA           1</code></pre>
+<p>On peut ainsi compiler une matrice des corrélations comprenant les
+coefficients de corrélation et les p-value.</p>
+<p>La significativité des p-value est indiquée comme suit :</p>
+<ul>
+<li><p>* : 0.05</p></li>
+<li><p>** : 0.01</p></li>
+<li><p>*** : 0.001</p></li>
+</ul>
+<p>La fonction <code>chart.Correlation()</code> du package <code>PerformanceAnalytics</code>
+permet également de visualiser les corrélations en plus de la
+distribution de chaque variables.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="statistiques-univariées.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(PerformanceAnalytics)</span></code></pre></div>
+<pre><code>## Warning: le package &#39;PerformanceAnalytics&#39; a été compilé avec la version R 4.2.2</code></pre>
+<pre><code>## Le chargement a nécessité le package : xts</code></pre>
+<pre><code>## Le chargement a nécessité le package : zoo</code></pre>
+<pre><code>## 
+## Attachement du package : &#39;zoo&#39;</code></pre>
+<pre><code>## Les objets suivants sont masqués depuis &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## 
+## Attachement du package : &#39;xts&#39;</code></pre>
+<pre><code>## Les objets suivants sont masqués depuis &#39;package:pastecs&#39;:
+## 
+##     first, last</code></pre>
+<pre><code>## Les objets suivants sont masqués depuis &#39;package:dplyr&#39;:
+## 
+##     first, last</code></pre>
+<pre><code>## 
+## Attachement du package : &#39;PerformanceAnalytics&#39;</code></pre>
+<pre><code>## L&#39;objet suivant est masqué depuis &#39;package:graphics&#39;:
+## 
+##     legend</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="statistiques-univariées.html#cb68-1" tabindex="-1"></a><span class="fu">chart.Correlation</span>(</span>
+<span id="cb68-2"><a href="statistiques-univariées.html#cb68-2" tabindex="-1"></a>  iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
+<span id="cb68-3"><a href="statistiques-univariées.html#cb68-3" tabindex="-1"></a>  <span class="at">histogram =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb68-4"><a href="statistiques-univariées.html#cb68-4" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;kendall&quot;</span></span>
+<span id="cb68-5"><a href="statistiques-univariées.html#cb68-5" tabindex="-1"></a>  ) <span class="co"># A specification for the type of points</span></span></code></pre></div>
+<pre><code>## Warning in par(usr): argument 1 does not name a graphical parameter</code></pre>
+<pre><code>## Warning in par(usr): argument 1 does not name a graphical parameter
+
+## Warning in par(usr): argument 1 does not name a graphical parameter
+
+## Warning in par(usr): argument 1 does not name a graphical parameter
+
+## Warning in par(usr): argument 1 does not name a graphical parameter
+
+## Warning in par(usr): argument 1 does not name a graphical parameter</code></pre>
+<p><img src="04-stat_desc_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="section" class="section level4" number="6.2.4.2">
+<h4><span class="header-section-number">6.2.4.2</span> </h4>
+<p>Les test de corrélations</p>
+<div id="la-corrélation-de-pearson" class="section level5 hasAnchor" number="6.2.4.2.1">
+<h5><span class="header-section-number">6.2.4.2.1</span> La corrélation de Pearson<a href="statistiques-univariées.html#la-corrélation-de-pearson" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>La corrélation de Pearson mesure une relation linéaire entre deux
+variables (x et y). C’est un test paramétrique il dépend de la
+distribution des données. Il peut être utilisé uniquement si <span class="math inline">\(x\)</span> et <span class="math inline">\(y\)</span>
+sont issus d’un distribution normale.</p>
+<p><span class="math display">\[
+r_{xy}={\frac {\sum _{i=1}^{n}(x_{i}-{\bar {x}})(y_{i}-{\bar {y}})}{{\sqrt {\sum _{i=1}^{n}(x_{i}-{\bar {x}})^{2}}}{\sqrt {\sum _{i=1}^{n}(y_{i}-{\bar {y}})^{2}}}}}
+\]</span></p>
+<p>où :</p>
+<ul>
+<li><p><span class="math inline">\(n\)</span> est le taille de l’échantillon</p></li>
+<li><p><span class="math inline">\(x_i\)</span>, <span class="math inline">\(y_i\)</span> sont les individus de échantillonés indexés par <span class="math inline">\(i\)</span></p></li>
+<li><p><span class="math inline">\({\bar{x}}={\frac {1}{n}}\sum _{i=1}^{n}x_{i}\)</span> la moyenne de
+l’échantillon, de même pour <span class="math inline">\({\bar y}\)</span></p></li>
+</ul>
+<p><span class="math inline">\(r_{x,y}\)</span> est le coefficient de corrélation entre les variables <span class="math inline">\(x\)</span> et
+<span class="math inline">\(y\)</span>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="statistiques-univariées.html#cb71-1" tabindex="-1"></a><span class="fu">cor.test</span>(iris<span class="sc">$</span>Sepal.Length, iris<span class="sc">$</span>Petal.Length, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>) <span class="co"># s’il y a des données manquantes (case=wise deletion) : cor( x, y, method = &quot;pearson&quot;, use = &quot;complete.obs&quot;) 4 res</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  iris$Sepal.Length and iris$Petal.Length
+## t = 21.646, df = 148, p-value &lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.8270363 0.9055080
+## sample estimates:
+##       cor 
+## 0.8717538</code></pre>
+<p>Interprétation :</p>
+<ul>
+<li><p>-1 indicates a strong negative correlation : this means that every
+time x increases, y</p></li>
+<li><p>0 means that there is no association between the two variables (x
+and y).</p></li>
+<li><p>1 indicates a strong positive correlation : this means that y
+increases with x.</p></li>
+</ul>
+</div>
+<div id="la-corrélation-de-spearman" class="section level5 hasAnchor" number="6.2.4.2.2">
+<h5><span class="header-section-number">6.2.4.2.2</span> La corrélation de Spearman<a href="statistiques-univariées.html#la-corrélation-de-spearman" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="la-corrélation-de-kendall" class="section level5 hasAnchor" number="6.2.4.2.3">
+<h5><span class="header-section-number">6.2.4.2.3</span> La corrélation de Kendall<a href="statistiques-univariées.html#la-corrélation-de-kendall" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chercher-des-données-et-les-remplacer.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="blocks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-stat_desc.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["fake-book.pdf", "fake-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

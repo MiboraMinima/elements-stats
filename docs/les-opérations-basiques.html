@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 4 Les opérations basiques | Éléments de statistiques</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 4 Les opérations basiques | Éléments de statistiques" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 4 Les opérations basiques | Éléments de statistiques" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::gitbook,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Antoine Le Doeuff" />
+
+
+<meta name="date" content="2023-02-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="les-différents-type-de-variables.html"/>
+<link rel="next" href="chercher-des-données-et-les-remplacer.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Éléments de statistiques</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#la-démarche-de-la-modélisation-en-mathématique"><i class="fa fa-check"></i><b>2.1</b> La démarche de la modélisation en mathématique</a></li>
+</ul></li>
+<li class="part"><span><b>I Notions de statistiques élémentaires</b></span></li>
+<li class="chapter" data-level="3" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html"><i class="fa fa-check"></i><b>3</b> Les différents type de variables</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#quantitative"><i class="fa fa-check"></i><b>3.1</b> Quantitative</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#quantitative-discrète"><i class="fa fa-check"></i><b>3.1.1</b> Quantitative discrète</a></li>
+<li class="chapter" data-level="3.1.2" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#quantitative-continue"><i class="fa fa-check"></i><b>3.1.2</b> Quantitative continue</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#qualitative"><i class="fa fa-check"></i><b>3.2</b> Qualitative</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#nominal"><i class="fa fa-check"></i><b>3.2.1</b> Nominal</a></li>
+<li class="chapter" data-level="3.2.2" data-path="les-différents-type-de-variables.html"><a href="les-différents-type-de-variables.html#ordinale"><i class="fa fa-check"></i><b>3.2.2</b> Ordinale</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Nettoyer et transformer ses données</b></span></li>
+<li class="chapter" data-level="4" data-path="les-opérations-basiques.html"><a href="les-opérations-basiques.html"><i class="fa fa-check"></i><b>4</b> Les opérations basiques</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="les-opérations-basiques.html"><a href="les-opérations-basiques.html#extraction-des-données-concaténation"><i class="fa fa-check"></i><b>4.1</b> Extraction des données, concaténation</a></li>
+<li class="chapter" data-level="4.2" data-path="les-opérations-basiques.html"><a href="les-opérations-basiques.html#changer-la-nature-des-variables"><i class="fa fa-check"></i><b>4.2</b> Changer la nature des variables</a></li>
+<li class="chapter" data-level="4.3" data-path="les-opérations-basiques.html"><a href="les-opérations-basiques.html#résumé"><i class="fa fa-check"></i><b>4.3</b> Résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chercher-des-données-et-les-remplacer.html"><a href="chercher-des-données-et-les-remplacer.html"><i class="fa fa-check"></i><b>5</b> Chercher des données et les remplacer</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chercher-des-données-et-les-remplacer.html"><a href="chercher-des-données-et-les-remplacer.html#références"><i class="fa fa-check"></i><b>5.1</b> Références</a></li>
+</ul></li>
+<li class="part"><span><b>III Statistiques descriptives</b></span></li>
+<li class="chapter" data-level="6" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html"><i class="fa fa-check"></i><b>6</b> Statistiques univariées</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#variables-quantitatives"><i class="fa fa-check"></i><b>6.1</b> Variables quantitatives</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#mesurer-les-valeurs-centrales"><i class="fa fa-check"></i><b>6.1.1</b> Mesurer les valeurs centrales</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#les-indicateurs-de-dispersion"><i class="fa fa-check"></i><b>6.1.2</b> Les indicateurs de dispersion</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#intervalles-de-confiance-et-erreur-standard"><i class="fa fa-check"></i><b>6.1.3</b> Intervalles de confiance et erreur standard</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#les-données-manquantes"><i class="fa fa-check"></i><b>6.1.4</b> Les données manquantes</a></li>
+<li class="chapter" data-level="6.1.5" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#déterminer-la-distribution-des-données"><i class="fa fa-check"></i><b>6.1.5</b> Déterminer la distribution des données</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#les-tests"><i class="fa fa-check"></i><b>6.2</b> Les tests</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#tests-paramétriques-et-non-paramétriques"><i class="fa fa-check"></i><b>6.2.1</b> Tests paramétriques et non paramétriques</a></li>
+<li class="chapter" data-level="6.2.2" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#tests-sur-variables-quantitatives"><i class="fa fa-check"></i><b>6.2.2</b> Tests sur variables quantitatives</a></li>
+<li class="chapter" data-level="6.2.3" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#tests-sur-variables-qualitatives"><i class="fa fa-check"></i><b>6.2.3</b> Tests sur variables qualitatives</a></li>
+<li class="chapter" data-level="6.2.4" data-path="statistiques-univariées.html"><a href="statistiques-univariées.html#déterminer-les-corrélations"><i class="fa fa-check"></i><b>6.2.4</b> Déterminer les corrélations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>7</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>7.1</b> Equations</a></li>
+<li class="chapter" data-level="7.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>7.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="7.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>7.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>8</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>8.1</b> Publishing</a></li>
+<li class="chapter" data-level="8.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>8.2</b> 404 pages</a></li>
+<li class="chapter" data-level="8.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>8.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Éléments de statistiques</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="les-opérations-basiques" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapitre 4</span> Les opérations basiques<a href="les-opérations-basiques.html#les-opérations-basiques" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="extraction-des-données-concaténation" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Extraction des données, concaténation<a href="les-opérations-basiques.html#extraction-des-données-concaténation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Souvent on peut avoir à faire des extractions de la base de données initiale. Il existe deux fonctions de base très pratique, les fonctions <code>subset</code> et <code>agregate</code>. La première extrait des variables avec ou sans filtre, la deuxième permet d’extraire des variables tout en appliquant une fonction.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="les-opérations-basiques.html#cb3-1" tabindex="-1"></a><span class="co"># Extraire les individus dont lhabitants</span></span>
+<span id="cb3-2"><a href="les-opérations-basiques.html#cb3-2" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="les-opérations-basiques.html#cb5-1" tabindex="-1"></a><span class="fu">subset</span>(iris<span class="sc">$</span>Petal.Width, iris<span class="sc">$</span>Species<span class="sc">==</span><span class="st">&#39;setosa&#39;</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##  [1] 0.2 0.4 0.2 0.2 0.4 0.4 0.3 0.3 0.3 0.2 0.4 0.5 0.2 0.2 0.4 0.1 0.2 0.2 0.2
+## [20] 0.4 0.2 0.2</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="les-opérations-basiques.html#cb7-1" tabindex="-1"></a><span class="co"># Calculer la moyenne des prix dans les communes</span></span>
+<span id="cb7-2"><a href="les-opérations-basiques.html#cb7-2" tabindex="-1"></a><span class="fu">aggregate</span>(iris<span class="sc">$</span>Petal.Width, <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">by =</span> <span class="fu">list</span>(iris<span class="sc">$</span>Species), <span class="at">FUN =</span> mean)</span></code></pre></div>
+<pre><code>##      Group.1     x
+## 1     setosa 0.246
+## 2 versicolor 1.326
+## 3  virginica 2.026</code></pre>
+</div>
+<div id="changer-la-nature-des-variables" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Changer la nature des variables<a href="les-opérations-basiques.html#changer-la-nature-des-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Il peut arriver que R n’interprète pas bien la nature des variables (). On peut modifier leur nature avec le code suivant :</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="les-opérations-basiques.html#cb9-1" tabindex="-1"></a><span class="co"># définir comme facteur</span></span>
+<span id="cb9-2"><a href="les-opérations-basiques.html#cb9-2" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">16</span>,<span class="dv">180</span>,<span class="dv">220</span>,<span class="dv">150</span>,<span class="dv">20</span>) <span class="co"># vecteur numérique</span></span>
+<span id="cb9-3"><a href="les-opérations-basiques.html#cb9-3" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(var) <span class="co"># pour dire que la variable est un facteur</span></span>
+<span id="cb9-4"><a href="les-opérations-basiques.html#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="les-opérations-basiques.html#cb9-5" tabindex="-1"></a><span class="co"># définir en numérique</span></span>
+<span id="cb9-6"><a href="les-opérations-basiques.html#cb9-6" tabindex="-1"></a>var <span class="ot">&lt;-</span><span class="fu">as.character</span>(<span class="fu">c</span>(<span class="st">&#39;16&#39;</span>,<span class="st">&#39;180&#39;</span>, <span class="st">&#39;220&#39;</span>, <span class="st">&#39;150&#39;</span>, <span class="st">&#39;20&#39;</span>)) <span class="co"># vecteur de caractères</span></span>
+<span id="cb9-7"><a href="les-opérations-basiques.html#cb9-7" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(var) <span class="co"># pour dire que la variable est numérique.</span></span>
+<span id="cb9-8"><a href="les-opérations-basiques.html#cb9-8" tabindex="-1"></a>                </span>
+<span id="cb9-9"><a href="les-opérations-basiques.html#cb9-9" tabindex="-1"></a><span class="co"># Facteur vers numérique</span></span>
+<span id="cb9-10"><a href="les-opérations-basiques.html#cb9-10" tabindex="-1"></a><span class="fu">library</span>(hablar)</span></code></pre></div>
+<pre><code>## Warning: le package &#39;hablar&#39; a été compilé avec la version R 4.2.2</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="les-opérations-basiques.html#cb11-1" tabindex="-1"></a>var <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb11-2"><a href="les-opérations-basiques.html#cb11-2" tabindex="-1"></a><span class="fu">as_reliable_num</span>(var)</span></code></pre></div>
+<pre><code>## [1] 2 1 1 1 2</code></pre>
+</div>
+<div id="résumé" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Résumé<a href="les-opérations-basiques.html#résumé" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Le package <code>dplyr</code><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> permet de manipuler facilement les données. On trouve dans le tableau suivant les fonctions qui sont les plus utilisées pour manipuler les données.</p>
+<table>
+<colgroup>
+<col width="72%" />
+<col width="27%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>R code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sélectionner des lignes en foncton de leur valeurs</td>
+<td><code>df %&gt;% filter(var1 == value, var2 &gt; value,…)</code></td>
+</tr>
+<tr class="even">
+<td>Enlever les lignes dupliquée</td>
+<td><code>df %&gt;% distinct()</code></td>
+</tr>
+<tr class="odd">
+<td>Arrange the rows based on specified column’s values. Par défaut le <code>df</code> est réarrangé en fonction de la variable choisie dans l’ordre croissant</td>
+<td><p><code>df %&gt;% arrange(var) : ordre croissant</code></p>
+<p><code>df %&gt;% arrange(desc(var)) : ordre décroissant</code></p></td>
+</tr>
+<tr class="even">
+<td>Sélectionner des variables par leur nom</td>
+<td><code>df %&gt;% select(var_1, var_2, var_x)</code></td>
+</tr>
+<tr class="odd">
+<td>Renommer des colonnes</td>
+<td><code>df %&gt;% rename(new_var = old_var)</code></td>
+</tr>
+<tr class="even">
+<td>Renommer des lignes</td>
+<td><code>rownames(df)[rownames(df) == "label"] = "new_label"</code></td>
+</tr>
+<tr class="odd">
+<td>Ajouter et créer de nouvelles variables</td>
+<td><code>df %&gt;% mutate(new_var = an operation)</code></td>
+</tr>
+<tr class="even">
+<td>Mettre une colonne en ligne (<code>tibble</code>)</td>
+<td><code>df &lt;- column_to_rownames(df, var = "variable")</code></td>
+</tr>
+<tr class="odd">
+<td>Mettre une ligne en colonne (<code>tibble</code>)</td>
+<td><code>df &lt;- rownames_to_column(df)</code></td>
+</tr>
+<tr class="even">
+<td>Interchanger lignes et les colonnes</td>
+<td><code>t(df)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Lien vers le un <a href="https://github.com/rstudio/cheatsheets/blob/main/data-transformation.pdf"><em>cheat sheet</em></a><a href="les-opérations-basiques.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="les-différents-type-de-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chercher-des-données-et-les-remplacer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-clean_trans.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["fake-book.pdf", "fake-book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
